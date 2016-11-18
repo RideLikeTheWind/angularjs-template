@@ -1,5 +1,5 @@
 # A tutorial started for AngularJS
---- 
+
 This template is a very simple starter for AngularJS, and is linked to the tutorial on https://successcallback.wordpress.com/2016/11/18/getting-started-wth-angularjs
 It is suggested that you read the tutorial before forking/cloning this repo.
 
@@ -34,7 +34,7 @@ cd ~/angularjs-template
 npm install
 ```
 
-    then:
+then:
 
 ``` shell
 grunt
