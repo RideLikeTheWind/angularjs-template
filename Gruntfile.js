@@ -1,17 +1,19 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-  // configure the tasks
-  grunt.initConfig({
+      // configure the tasks
+    grunt.initConfig({
 
-    copy: {
-      build: {
-        cwd: 'source',
-        src: [ '**' ],
-        dest: 'build',
-        expand: true
-      },
+        copy: {
+            build: {
+                cwd: 'src',
+                src: [ 'index.html',
+                'app/**',
+            ],
+            dest: 'build',
+            expand: true
+        },
     },
-    
+
     clean: {
         build: {
             src: [ 'build' ]
@@ -23,7 +25,7 @@ module.exports = function(grunt) {
             src: [ 'build/**/*.*.js', '!build/application.js' ],
         },
     },
-    
+
     uglify: {
         build: {
             options: {
@@ -35,38 +37,47 @@ module.exports = function(grunt) {
             }
         }
     },
+
+    cssmin: {
+        build: {
+            files: {
+                'build/application.css': [ 'build/**/*.*.css' ]
+            }
+        }
+    },
     
     watch: {
-      stylesheets: {
-        files: 'source/**/*.*.css',
-        tasks: [ 'stylesheets' ]
-      },
-      scripts: {
-        files: [ 'source/**/*.*.js' ],
-        tasks: [ 'scripts' ]
-      },
-      copy: {
-        files: [ 'source/**' ],
-        tasks: [ 'copy' ]
-      }
+        stylesheets: {
+            files: 'src/**/*.*.css',
+            tasks: [ 'stylesheets' ]
+        },
+        scripts: {
+            files: [ 'src/**/*.*.js' ],
+            tasks: [ 'scripts' ]
+        },
+        copy: {
+            files: [ 'src/**' ],
+            tasks: [ 'copy' ]
+        }
     },
     
     connect: {
-      server: {
-        options: {
-          port: 8000,
-          base: 'build',
-          hostname: '*'
+        server: {
+            options: {
+                port: 8000,
+                base: 'build',
+                hostname: '*'
+            }
         }
-      }
     }
 
-  });
+});
 
   // load the tasks
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
     
@@ -85,7 +96,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'stylesheets', 
     'Compiles the stylesheets.', 
-    [ 'clean:stylesheets' ]
+    [ 'clean:stylesheets', 'copy', 'cssmin' ]
   );
   
   grunt.registerTask(
