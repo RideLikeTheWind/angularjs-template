@@ -1,4 +1,6 @@
-angular.module('myApp', ['ngRoute'])
+angular.module('myApp', ['ngRoute', 'firebase'])
+
+.constant('FirebaseUrl', 'https://blinding-inferno-8283.firebaseio.com/')
 
 .config(['$routeProvider', function($routeProvider) {
  
