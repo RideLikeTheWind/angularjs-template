@@ -19,10 +19,10 @@ module.exports = function (grunt) {
             src: [ 'build' ]
         },
         stylesheets: {
-            src: [ 'build/**/*.*.css', '!build/application.css' ]
+            src: [ 'build/**/*.*.css', 'build/application.css' ]
         },
         scripts: {
-            src: [ 'build/**/*.*.js', '!build/application.js' ],
+            src: [ 'build/**/*.*.js', 'build/application.js' ],
         },
     },
 
