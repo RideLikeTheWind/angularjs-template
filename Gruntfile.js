@@ -3,21 +3,28 @@ module.exports = function (grunt) {
       // configure the tasks
     grunt.initConfig({
 
-        copy: {
-            build: {
-                cwd: 'src',
-                src: [ 'index.html',
-                'app/**',
-            ],
-            dest: 'build',
-            expand: true
+    copy: {
+		build: {
+			cwd: 'src',
+			src: [ 'index.html', 'app/**', ],
+			dest: 'build',
+			expand: true
         },
-    },
+		dependencies: {
+			cwd: 'node_modules',
+			src: 'angular-google-gapi/**',
+			dest: 'build/dependencies',
+			expand: true,
+		},
+	},
 
     clean: {
         build: {
             src: [ 'build' ]
         },
+		dependencies: {
+			src: ['dependencies']
+		},
         stylesheets: {
             src: [ 'build/**/*.*.css', '!build/application.css' ]
         },
@@ -33,7 +40,7 @@ module.exports = function (grunt) {
                 preserveComments: false
             },
             files: {
-                'build/application.js': [ 'build/**/*.*.js'  ],
+                'build/application.js': [ 'build/**/*.*.js', '!build/dependencies/**/*.*.js'  ],
             }
         }
     },
@@ -52,7 +59,7 @@ module.exports = function (grunt) {
             tasks: [ 'stylesheets' ]
         },
         scripts: {
-            files: [ 'src/**/*.*.js' ],
+            files: [ 'src/**/*.*.js', 'src/**' ],
             tasks: [ 'scripts' ]
         },
         copy: {
@@ -84,7 +91,7 @@ module.exports = function (grunt) {
   grunt.registerTask(
     'build', 
     'Compiles all of the assets and copies the files to the build directory.', 
-    [ 'clean:build', 'copy', 'stylesheets', 'scripts' ]
+    [ 'clean', 'copy', 'stylesheets', 'scripts' ]
   );
   
   grunt.registerTask(
