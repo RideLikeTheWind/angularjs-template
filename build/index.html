@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="google-signin-client_id" content="901439137249-3aulv1h92rntb6c4lav87e4q1uo63kq7.apps.googleusercontent.com">
+	<meta name="google-signin-cookiepolicy" content="single_host_origin">
     <title>Angular Starter</title>
 
     <!-- Bootstrap -->
@@ -21,9 +23,16 @@
 		
   </head>
   <body ng-app="myApp">
-	  <div google-authentication></div>
+	  
+	  
+	  
+	  <div navigation-bar>
+		  <div google-authentication></div>
+	  </div>
     <div class="container-fluid" ng-view></div>
-
+	
+	
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
@@ -32,6 +41,10 @@
     <!-- Angular -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<script type="text/javascript" src="dependencies/angular-google-gapi/dist/angular-google-gapi.min.js"></script>
+	
 	
 	<!-- firebase -->
 	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
@@ -48,9 +61,10 @@
 	  firebase.initializeApp(config);
 	</script>
     
-
-	
 	<script src="application.js" type="text/javascript"></script>
+	
+	
+	
 	
   </body>
 </html>
