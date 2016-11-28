@@ -46,7 +46,7 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 						});
 				      
 				    } else {
-				      console.log('User already signed-in Firebase.');
+				      console.log('User signed into Firebase');
 				    }
 					
 					//Stores the user locally so we can use their credentials elsewhere
@@ -54,9 +54,11 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 					GAuth.getToken().then(function(result) {
 						appUserManager.accessToken = result;
 					});
-				
+					$scope.$broadcast('userIsLogin', true);
 				
 				  });
+			}, function(error){
+				//handle login failure
 			});
 		}
 		

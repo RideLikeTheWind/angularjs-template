@@ -1,0 +1,15 @@
+<div class="col-sm-6 col-md-4">
+	<div class="panel">
+		<div class="panel-heading">
+			<h1>{{ panelTitle }}</h1>
+		</div>
+		<div class="panel-body">
+			<div class="list-group">
+				<div class="list-group-item" ng-repeat="message in gmailMessages">
+					<h3>{{ message.from.value }}</h3>
+					<p class="title">{{ message.subject.value }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

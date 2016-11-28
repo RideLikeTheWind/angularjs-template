@@ -33,7 +33,6 @@ angular.module('myApp', ['ngRoute', 'firebase', 'angular-google-gapi'])
         // That would lead to popup blockers blocking the auth window
         GAuth.load().then(function() {
         	console.log('loaded');
-			console.log(GData.isLogin());
         });
 		
     }
