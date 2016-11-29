@@ -5,7 +5,7 @@ angular.module('myApp').directive('navigationBar', ['googleApiService', 'appUser
 	}];
 	
 	var navBarLink = function(scope, elem, attrs) {
-		
+		// do nothing
 	};
 	
 	
