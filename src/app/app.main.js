@@ -14,6 +14,7 @@ angular.module('myApp', ['ngRoute', 'firebase'])
     });
 }])
 
+<<<<<<< HEAD
 <<<<<<< 5272e275853900e4520bf126d6931ae45c112178
 .run(['GAuth', 'GApi', 'GData', '$rootScope', 'appUserManager',
     function(GAuth, GApi, GData, $rootScope, appUserManager) {
@@ -39,6 +40,8 @@ angular.module('myApp', ['ngRoute', 'firebase'])
     }
 ]);
 =======
+=======
+>>>>>>> 8057191fe288fd8cfc037e565ae6b48d5fbca085
 .run(['coreAuthService', '$q', function(coreAuthService, $q) {
 	coreAuthService.setDiscoveryDocuments({drive:'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest', classroom: 'https://www.googleapis.com/discovery/v1/apis/classroom/v1/rest'});
 	coreAuthService.setClientId('901439137249-3aulv1h92rntb6c4lav87e4q1uo63kq7.apps.googleusercontent.com')
@@ -49,5 +52,9 @@ angular.module('myApp', ['ngRoute', 'firebase'])
 		gapi.client.load('classroom', 'v1');
 	});
 	
+<<<<<<< HEAD
 }]);
 >>>>>>> Rewrote entire auth service integrating GAPI and Firebase auth
+=======
+}]);
+>>>>>>> 8057191fe288fd8cfc037e565ae6b48d5fbca085

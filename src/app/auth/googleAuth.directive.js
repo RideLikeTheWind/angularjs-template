@@ -12,6 +12,7 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 
 		$scope.googleSignIn = function() {
 		// Fires the login and connects with the FB database if necessary
+<<<<<<< HEAD
 <<<<<<< 5272e275853900e4520bf126d6931ae45c112178
 			GAuth.login().then(function(googleUser) {
 				var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
@@ -44,11 +45,15 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 =======
 			coreAuthService.login().then(function(googleUser) {
 >>>>>>> Rewrote entire auth service integrating GAPI and Firebase auth
+=======
+			coreAuthService.login().then(function(googleUser) {
+>>>>>>> 8057191fe288fd8cfc037e565ae6b48d5fbca085
 					//Stores the user locally so we can use their credentials elsewhere
 					appUserManager.currentUser = googleUser;
 					coreAuthService.getToken().then(function(result) {
 						appUserManager.accessToken = result;
 					});
+<<<<<<< HEAD
 <<<<<<< 5272e275853900e4520bf126d6931ae45c112178
 					$scope.$broadcast('userIsLogin', true);
 				
@@ -56,6 +61,8 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 			}, function(error){
 				//handle login failure
 =======
+=======
+>>>>>>> 8057191fe288fd8cfc037e565ae6b48d5fbca085
 			});
 		}
 		
@@ -63,7 +70,10 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 			coreAuthService.logout().then(function() {
 				appUserManager.currentUser = null;
 				appUserManager.accessToken = null;
+<<<<<<< HEAD
 >>>>>>> Rewrote entire auth service integrating GAPI and Firebase auth
+=======
+>>>>>>> 8057191fe288fd8cfc037e565ae6b48d5fbca085
 			});
 		}
 		
