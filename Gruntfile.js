@@ -10,21 +10,21 @@ module.exports = function (grunt) {
 			dest: 'build',
 			expand: true
         },
-		dependencies: {
-			cwd: 'node_modules',
-			src: 'angular-google-gapi/**',
-			dest: 'build/dependencies',
-			expand: true,
-		},
+		// dependencies: {
+// 			cwd: 'node_modules',
+// 			src: 'angular-google-gapi/**',
+// 			dest: 'build/dependencies',
+// 			expand: true,
+// 		},
 	},
 
     clean: {
         build: {
             src: [ 'build' ]
         },
-		dependencies: {
-			src: ['dependencies']
-		},
+		// dependencies: {
+// 			src: ['dependencies']
+// 		},
         stylesheets: {
             src: [ 'build/**/*.*.css', 'build/application.css' ]
         },
@@ -40,7 +40,8 @@ module.exports = function (grunt) {
                 preserveComments: false
             },
             files: {
-                'build/application.js': [ 'build/**/*.*.js', '!build/dependencies/**/*.*.js'  ],
+                //'build/application.js': [ 'build/**/*.*.js', '!build/dependencies/**/*.*.js'  ],
+				'build/application.js': [ 'build/**/*.*.js' ],
             }
         }
     },

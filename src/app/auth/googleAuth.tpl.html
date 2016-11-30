@@ -1,1 +1,2 @@
-<button class="btn btn-default" ng-click="googleSignIn()">Sign in with Google</button>
+<button class="btn btn-default" ng-click="googleSignIn()" ng-if="!signInButton">Sign in with Google</button>
+<button class="btn btn-default" ng-click="googleSignOut()" ng-if="signInButton">Sign out</button>
