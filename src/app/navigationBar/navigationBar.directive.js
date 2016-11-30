@@ -1,4 +1,4 @@
-angular.module('myApp').directive('navigationBar', ['googleApiService', 'GApi', 'GAuth', 'appUserManager', function(googleApiService, GApi, GAuth, appUserManager) {
+angular.module('myApp').directive('navigationBar', ['googleApiService', 'appUserManager', function(googleApiService, appUserManager) {
 	
 	var navigationBarController = [ '$scope', function($scope) {
 			

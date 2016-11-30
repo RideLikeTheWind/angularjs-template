@@ -1,26 +1,18 @@
-angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', 'appUserManager', 'GAuth', '$window', function(firebase, Auth, appUserManager, GAuth, $window) {
+angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', 'appUserManager', '$window', 'coreAuthService', function(firebase, Auth, appUserManager, $window, coreAuthService) {
 	
 	var googleAuthController = ['$scope', function($scope) {
 		
 		$scope.auth = Auth;
-		
-		$scope.isUserEqual = function (googleUser, firebaseUser) {
-		  if (firebaseUser) {
-		    var providerData = firebaseUser.providerData;
-		    for (var i = 0; i < providerData.length; i++) {
-		      if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
-		          providerData[i].uid === googleUser.id) {
-		        // We don't need to reauth the Firebase connection.
-		        return true;
-		      }
-		    }
-		  }
-		  return false;
-		}
-		
+		$scope.$on('gapiAuthService:signedIn', function(event, args) {
+			$scope.signInButton = args.userSignedIn;
+			if(args.userSignedIn){
+				console.log('Firebase user: ',firebase.auth().currentUser);
+			}
+		});
+
 		$scope.googleSignIn = function() {
-			
 		// Fires the login and connects with the FB database if necessary
+<<<<<<< 5272e275853900e4520bf126d6931ae45c112178
 			GAuth.login().then(function(googleUser) {
 				var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
 				    unsubscribe();
@@ -49,16 +41,29 @@ angular.module("myApp").directive('googleAuthentication', ['firebase', 'Auth', '
 				      console.log('User signed into Firebase');
 				    }
 					
+=======
+			coreAuthService.login().then(function(googleUser) {
+>>>>>>> Rewrote entire auth service integrating GAPI and Firebase auth
 					//Stores the user locally so we can use their credentials elsewhere
 					appUserManager.currentUser = googleUser;
-					GAuth.getToken().then(function(result) {
+					coreAuthService.getToken().then(function(result) {
 						appUserManager.accessToken = result;
 					});
+<<<<<<< 5272e275853900e4520bf126d6931ae45c112178
 					$scope.$broadcast('userIsLogin', true);
 				
 				  });
 			}, function(error){
 				//handle login failure
+=======
+			});
+		}
+		
+		$scope.googleSignOut = function() {
+			coreAuthService.logout().then(function() {
+				appUserManager.currentUser = null;
+				appUserManager.accessToken = null;
+>>>>>>> Rewrote entire auth service integrating GAPI and Firebase auth
 			});
 		}
 		
